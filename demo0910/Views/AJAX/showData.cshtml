@@ -1,0 +1,48 @@
+﻿@model List<demo0910.Models.EmpViewModel>
+@{
+    Layout = null;
+}
+
+
+
+    <table class="table table-striped table-bordered">
+
+        <tr>
+            <td>Modify</td>
+            <td>EmployeeID</td>
+            <td>EmployeeName</td>
+            <td>Gender</td>
+            <td>Birthday</td>
+            <td>CreateDate</td>
+            <td>LastLoginDate</td>
+            <td>UnitNO</td>
+            <td>UnitName</td>
+            <td>JobTitle</td>
+            <td>seniority</td>
+           
+        </tr>
+        @foreach (var item in Model)//Model是屬性
+        {
+
+            <tr>
+                <td> <input type="button" value="Modify" name="Employee" style="color:blue; background-color:#C2C2FF" onclick="location.href = '@Url.Action("Edit")?EmployeeID=@item.EmployeeID'"></td>
+                <td>@item.EmployeeID</td>
+                <td>@item.EmployeeName</td>
+                <td>@item.Gender</td>
+                <td>@item.Birthday.ToLongDateString()</td>
+                <td>@item.CreateDate.ToLongDateString()</td>
+                <td>@item.LastLoginDate.ToLongDateString()</td>
+                <td>@item.UnitNO</td>
+                <td>@item.UnitName</td>
+                <td>@item.JobTitle</td>
+                <td>@item.seniority</td>
+               
+            </tr>
+
+        }
+
+
+    </table>
+
+
+

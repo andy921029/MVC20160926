@@ -1,0 +1,100 @@
+﻿@model List<demo0910.Models.EmpViewModel>
+@{
+    ViewBag.Title = "新增";
+
+}
+
+@*<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - 我的 ASP.NET 應用程式</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery", "~/bundles/jqueryui",
+                    "~/bundles/jqueryval")
+
+
+    <a href='@Url.Action("Add")' class="btn btn-info">新增</a>
+</head>
+
+<body>*@
+
+    <form action="AddData" method="post">
+        <dl class="dl-horizontal">
+            <dt>EmployeeID</dt>
+            <dd><input type="text" name="EmployeeID" /></dd>
+        </dl>
+        <dl class="dl-horizontal">
+            <dt>EmployeeName</dt>
+            <dd><input type="text" name="EmployeeName" /></dd>
+        </dl>
+        <dl class="dl-horizontal">
+            <dt>Gender</dt>
+            <dd><input type="text" name="Gender" /></dd>
+        </dl>
+        <dl class="dl-horizontal">
+            <dt>Birthday</dt>
+            <dd><input type="text" name="Birthday" /></dd>
+        </dl>
+        <dl class="dl-horizontal">
+            <dt>CreateDate</dt>
+            <dd><input type="text" name="CreateDate" /></dd>
+        </dl>
+        <dl class="dl-horizontal">
+            <dt>LastLoginDate</dt>
+            <dd><input type="text" name="LastLoginDate" /></dd>
+        </dl>
+        <dl class="dl-horizontal">
+            <dt>UnitNO</dt>
+            <dd><input type="text" name="UnitNO" /></dd>
+        </dl>
+        <dl class="dl-horizontal">
+            <dt>UnitName</dt>
+            <dd><input type="text" name="UnitName" /></dd>
+        </dl>
+        <dl class="dl-horizontal">
+            <dt>JobTitle</dt>
+            <dd><input type="text" name="JobTitle" /></dd>
+        </dl>
+        <dl class="dl-horizontal">
+            <dt>seniority</dt>
+            <dd><input type="text" name="seniority" /></dd>
+        </dl>
+        <div class="text-center">
+            <input type="submit" value="新增" id="btnAdd" />
+        </div>
+    </form>
+
+       @*<script>
+        //新增鈕事件
+        $("#btnAdd").click(function () {
+            //取得數字輸入器的值
+            var in_qty = $('#EmployeeID').jqxNumberInput('val');
+            //取得客戶下拉選取的值
+            var cust_id = $("#cmb_cust").jqxComboBox('getSelectedItem').value;
+            var work_name = $("#work_name").val();
+            var in_date = $("#in_date").val();
+            var work_note = $("#work_note").val();
+            alert(work_note);
+            var data = { insert: 'true', cust_id: cust_id, in_date: in_date, work_name: work_name, work_note: work_note };
+            //ajax傳資料到後端做新增
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("EditSav")',
+                data: { EmployeeID: $("#EmployeeID").val() },
+                success: function (r) {
+                    $('#EditSav').html(r);
+                }
+            });
+
+        })//end btnAdd click
+
+       </script>*@
+    @*</body>
+</html>*@
+
+ 

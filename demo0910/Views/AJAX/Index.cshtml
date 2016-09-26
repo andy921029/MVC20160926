@@ -1,0 +1,70 @@
+﻿@model List<demo0910.Models.EmpViewModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - 我的 ASP.NET 應用程式</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery", "~/bundles/jqueryui",
+                    "~/bundles/jqueryval")
+
+
+    <a href='@Url.Action("Add")' class="btn btn-info">新增</a>
+</head>
+
+<body>
+   
+    <div style="display:inline;">
+        <label>請輸入員工編號</label>
+        <input type="text" name="empid" id="empid" />
+        <input type="submit" value="查詢" id="btnSearch" class="btn btn-primary" />
+    </div>
+
+    <div id="showData"></div>
+
+
+    <script>
+    $(function () {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("showData")',
+            dataType: 'html',
+            success: function (r) {
+                $('#showData').html(r);
+            }
+        });
+
+        $('#btnSearch').click(function () {
+            if ($('#empid').val() == '') {
+                alert('input cannot empty');
+                return;
+            }
+            $.ajax({
+                type: 'GET',
+                data: { empid: $("#empid").val() },
+                url: '@Url.Action("showData")',
+                dataType: 'html',
+                success: function (r) {
+                    $('#showData').html(r);
+                }
+            });
+        });
+    });
+    </script>
+
+
+
+
+
+    </body>
+</html>

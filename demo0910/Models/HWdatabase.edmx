@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="databaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EmployeeData">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="EmployeeName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Birthday" Type="date" Nullable="false" />
+          <Property Name="CreateDate" Type="date" Nullable="false" />
+          <Property Name="LastLoginDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UnitTable">
+          <Key>
+            <PropertyRef Name="UnitNO" />
+          </Key>
+          <Property Name="UnitNO" Type="int" Nullable="false" />
+          <Property Name="UnitName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="JobTitle" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="seniority" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_EmployeeData_EmployeeData">
+          <End Role="EmployeeData" Type="Self.EmployeeData" Multiplicity="1" />
+          <End Role="EmployeeData1" Type="Self.EmployeeData" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeData">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="EmployeeData1">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeData_EmployeeData1">
+          <End Role="EmployeeData" Type="Self.EmployeeData" Multiplicity="1" />
+          <End Role="EmployeeData1" Type="Self.EmployeeData" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeData">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="EmployeeData1">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnitTable_UnitTable">
+          <End Role="UnitTable" Type="Self.UnitTable" Multiplicity="1" />
+          <End Role="UnitTable1" Type="Self.UnitTable" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UnitTable">
+              <PropertyRef Name="UnitNO" />
+            </Principal>
+            <Dependent Role="UnitTable1">
+              <PropertyRef Name="UnitNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnitTable_UnitTable1">
+          <End Role="UnitTable" Type="Self.UnitTable" Multiplicity="1" />
+          <End Role="UnitTable1" Type="Self.UnitTable" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UnitTable">
+              <PropertyRef Name="UnitNO" />
+            </Principal>
+            <Dependent Role="UnitTable1">
+              <PropertyRef Name="UnitNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="databaseModelStoreContainer">
+          <EntitySet Name="EmployeeData" EntityType="Self.EmployeeData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnitTable" EntityType="Self.UnitTable" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_EmployeeData_EmployeeData" Association="Self.FK_EmployeeData_EmployeeData">
+            <End Role="EmployeeData" EntitySet="EmployeeData" />
+            <End Role="EmployeeData1" EntitySet="EmployeeData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeData_EmployeeData1" Association="Self.FK_EmployeeData_EmployeeData1">
+            <End Role="EmployeeData" EntitySet="EmployeeData" />
+            <End Role="EmployeeData1" EntitySet="EmployeeData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnitTable_UnitTable" Association="Self.FK_UnitTable_UnitTable">
+            <End Role="UnitTable" EntitySet="UnitTable" />
+            <End Role="UnitTable1" EntitySet="UnitTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnitTable_UnitTable1" Association="Self.FK_UnitTable_UnitTable1">
+            <End Role="UnitTable" EntitySet="UnitTable" />
+            <End Role="UnitTable1" EntitySet="UnitTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="databaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EmployeeData">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="EmployeeData1" Relationship="Self.FK_EmployeeData_EmployeeData" FromRole="EmployeeData" ToRole="EmployeeData1" />
+          <NavigationProperty Name="EmployeeData2" Relationship="Self.FK_EmployeeData_EmployeeData" FromRole="EmployeeData1" ToRole="EmployeeData" />
+          <NavigationProperty Name="EmployeeData11" Relationship="Self.FK_EmployeeData_EmployeeData1" FromRole="EmployeeData" ToRole="EmployeeData1" />
+          <NavigationProperty Name="EmployeeData3" Relationship="Self.FK_EmployeeData_EmployeeData1" FromRole="EmployeeData1" ToRole="EmployeeData" />
+        </EntityType>
+        <EntityType Name="UnitTable">
+          <Key>
+            <PropertyRef Name="UnitNO" />
+          </Key>
+          <Property Name="UnitNO" Type="Int32" Nullable="false" />
+          <Property Name="UnitName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="JobTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="seniority" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="UnitTable1" Relationship="Self.FK_UnitTable_UnitTable" FromRole="UnitTable" ToRole="UnitTable1" />
+          <NavigationProperty Name="UnitTable2" Relationship="Self.FK_UnitTable_UnitTable" FromRole="UnitTable1" ToRole="UnitTable" />
+          <NavigationProperty Name="UnitTable11" Relationship="Self.FK_UnitTable_UnitTable1" FromRole="UnitTable" ToRole="UnitTable1" />
+          <NavigationProperty Name="UnitTable3" Relationship="Self.FK_UnitTable_UnitTable1" FromRole="UnitTable1" ToRole="UnitTable" />
+        </EntityType>
+        <Association Name="FK_EmployeeData_EmployeeData">
+          <End Role="EmployeeData" Type="Self.EmployeeData" Multiplicity="1" />
+          <End Role="EmployeeData1" Type="Self.EmployeeData" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeData">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="EmployeeData1">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeData_EmployeeData1">
+          <End Role="EmployeeData" Type="Self.EmployeeData" Multiplicity="1" />
+          <End Role="EmployeeData1" Type="Self.EmployeeData" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeData">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="EmployeeData1">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnitTable_UnitTable">
+          <End Role="UnitTable" Type="Self.UnitTable" Multiplicity="1" />
+          <End Role="UnitTable1" Type="Self.UnitTable" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UnitTable">
+              <PropertyRef Name="UnitNO" />
+            </Principal>
+            <Dependent Role="UnitTable1">
+              <PropertyRef Name="UnitNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnitTable_UnitTable1">
+          <End Role="UnitTable" Type="Self.UnitTable" Multiplicity="1" />
+          <End Role="UnitTable1" Type="Self.UnitTable" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UnitTable">
+              <PropertyRef Name="UnitNO" />
+            </Principal>
+            <Dependent Role="UnitTable1">
+              <PropertyRef Name="UnitNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="databaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EmployeeData" EntityType="Self.EmployeeData" />
+          <EntitySet Name="UnitTable" EntityType="Self.UnitTable" />
+          <AssociationSet Name="FK_EmployeeData_EmployeeData" Association="Self.FK_EmployeeData_EmployeeData">
+            <End Role="EmployeeData" EntitySet="EmployeeData" />
+            <End Role="EmployeeData1" EntitySet="EmployeeData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeData_EmployeeData1" Association="Self.FK_EmployeeData_EmployeeData1">
+            <End Role="EmployeeData" EntitySet="EmployeeData" />
+            <End Role="EmployeeData1" EntitySet="EmployeeData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnitTable_UnitTable" Association="Self.FK_UnitTable_UnitTable">
+            <End Role="UnitTable" EntitySet="UnitTable" />
+            <End Role="UnitTable1" EntitySet="UnitTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnitTable_UnitTable1" Association="Self.FK_UnitTable_UnitTable1">
+            <End Role="UnitTable" EntitySet="UnitTable" />
+            <End Role="UnitTable1" EntitySet="UnitTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="databaseModelStoreContainer" CdmEntityContainer="databaseEntities">
+          <EntitySetMapping Name="EmployeeData">
+            <EntityTypeMapping TypeName="databaseModel.EmployeeData">
+              <MappingFragment StoreEntitySet="EmployeeData">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnitTable">
+            <EntityTypeMapping TypeName="databaseModel.UnitTable">
+              <MappingFragment StoreEntitySet="UnitTable">
+                <ScalarProperty Name="UnitNO" ColumnName="UnitNO" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="seniority" ColumnName="seniority" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

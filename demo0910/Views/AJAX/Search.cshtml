@@ -1,0 +1,77 @@
+﻿@model List<demo0910.Models.EmpViewModel>
+
+@{
+    ViewBag.Title = "查詢";
+
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+
+<body>
+    <form action="Search" method="post">
+        <div style="display:inline;">
+            <label>請輸入員工編號</label>
+            <input type="text" name="id" />
+            <input type="submit" value="查詢" class="btn btn-primary" />
+        </div>
+        <hr />
+        @if (Model.Count == 0)
+        {
+            <label class="danger">查無資料</label>
+        }
+        else
+        {
+            <table class="table table-bordered">
+                <tr>
+                    <th> Modify</th>
+                    <th>EmployeeID</th>
+                    <th>EmployeeName</th>
+                    <th>Gender</th>
+                    <th>Birthday</th>
+                    <th>CreateDate</th>
+                    <th>LastLoginDate</th>
+                    <th>UnitNO</th>
+                    <th>UnitName</th>
+                    <th>JobTitle</th>
+                    <th>seniority</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.EmployeeID</td>
+                        <td>@item.EmployeeName</td>
+                        <td>@item.Gender</td>
+                        <td>@item.Birthday.ToLongDateString()</td>
+                        <td>@item.CreateDate.ToLongDateString()</td>
+                        <td>@item.LastLoginDate.ToLongDateString()</td>
+                        <td>@item.UnitNO</td>
+                        <td>@item.UnitName</td>
+                        <td>@item.JobTitle</td>
+                        <td>@item.seniority</td>
+                    </tr>
+                }
+            </table>
+            <input type="hidden" id="Msg" value='@TempData["Msg"]' />
+        }
+        <script>
+            $(function () {
+                if ($('#Msg').val() != '') {
+                    alert($('#Msg').val());
+                }
+            });
+        </script>
+    </form>
+
+
+</body>
+</html>
